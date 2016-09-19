@@ -1,0 +1,15 @@
+.status {
+   display: none;
+}
+.it {
+  display: inline-block;
+}
+.player {
+  width: 60px;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.chase, .winner, .loser, .play-again{
+  display: none;
+}

@@ -1,0 +1,32 @@
+<h1>Duck Duck Goose</h1>
+<%- i = 1 -%>
+<%- @game.players.each do |player| -%>
+  <div id=<%= player.name %>>
+    <div class="player"><%= player.name %></div>
+    <%- if player.status == "it" -%>
+      <div class="it" value=<%=player.status%>><%= player.status.capitalize %> </div>
+    <%- else -%>
+      <div class="status <%="status_#{i.to_s}"%>"  value=<%=player.status%>><%= player.status.capitalize %> </div>
+      <%- i += 1 %>
+    <%- end -%>
+  </div>
+<%- end -%>
+<div class="chase">
+  <%= @game.goose.name %> chases <%= @game.it.name %></br>
+</div>
+<div class="winner">
+  Winner is <%= @game.winner.name %></br>
+</div>
+<div class="loser">
+  <%= @game.loser.name %> is now It
+</div>
+<div class="play-again">
+  <%= form_tag '/play' do |f| %>
+    <%= hidden_field_tag :human_player, nil, :value => @game.human.name %>
+    <%= hidden_field_tag :it, nil, :value => @game.loser.name %>
+    <%- if @game.human.name == @game.loser.name -%>
+     Select your Goose: <%= select_tag "goose", options_from_collection_for_select(@game.players - [@game.human], "name", "name") %></br>
+    <%- end -%>
+    <%= submit_tag "Play again", :hide_label => true, :class => "btn btn-primary" %>
+  <% end %>
+</div>

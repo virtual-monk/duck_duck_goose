@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: duck_duck_goose_development
+
+test:
+  <<: *default
+  database: duck_duck_goose_test
+
+production:
+  <<: *default
+  database: duck_duck_goose_production
+  username: duck_duck_goose

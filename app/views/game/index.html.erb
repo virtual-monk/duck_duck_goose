@@ -1,0 +1,8 @@
+<div class="new-game-form" >
+  <h1>Duck Duck Goose</h1>
+  <h2>New Game</h2>
+  <%= form_tag '/play' do |f| %>
+    <%= text_field_tag :human_player, nil, :placeholder => "Enter your name" %>
+    <%= submit_tag "Start Game", :hide_label => true, :class => "btn btn-primary" %>
+  <% end %>
+</div>
